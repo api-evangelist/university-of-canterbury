@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-canterbury/main/json-schema/university-of-canterbury-collection-schema.json",
+  "title": "Figshare Collection",
+  "description": "A figshare collection (a grouping of related articles/outputs) as returned by the figshare REST API used by the Canterbury Figshare instance. Derived faithfully from the figshare OpenAPI Collection schema.",
+  "type": "object",
+  "required": ["id", "title", "doi", "handle", "url", "timeline"],
+  "properties": {
+    "id": { "type": "integer", "description": "Collection id" },
+    "title": { "type": "string", "description": "Collection title" },
+    "doi": { "type": "string", "description": "Collection DOI" },
+    "handle": { "type": "string", "description": "Collection Handle" },
+    "url": { "type": "string", "format": "uri", "description": "Api endpoint" },
+    "timeline": { "$ref": "#/$defs/Timeline" }
+  },
+  "$defs": {
+    "Timeline": {
+      "type": "object",
+      "description": "Collection publishing timeline dates.",
+      "properties": {
+        "posted": { "type": "string", "description": "Posted date" },
+        "submission": { "type": "string", "description": "Submission date" },
+        "revision": { "type": "string", "description": "Revision date" },
+        "firstOnline": { "type": "string", "description": "First online date" }
+      }
+    }
+  }
+}

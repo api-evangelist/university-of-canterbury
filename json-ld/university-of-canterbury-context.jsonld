@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "uc": "https://www.canterbury.ac.nz/ns#",
+    "figshare": "https://api.figshare.com/v2/ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+
+    "University": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+    "institution": {
+      "@id": "uc:institution",
+      "@type": "schema:CollegeOrUniversity"
+    },
+
+    "Article": {
+      "@id": "figshare:Article",
+      "@type": "@id"
+    },
+    "Collection": {
+      "@id": "figshare:Collection",
+      "@type": "@id"
+    },
+    "Project": {
+      "@id": "figshare:Project",
+      "@type": "@id"
+    },
+
+    "id": "schema:identifier",
+    "title": "schema:name",
+    "doi": {
+      "@id": "schema:identifier",
+      "uc:scheme": "DOI"
+    },
+    "handle": {
+      "@id": "schema:identifier",
+      "uc:scheme": "Handle"
+    },
+    "defined_type_name": "schema:additionalType",
+    "thumb": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "@id"
+    },
+    "created_date": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:DateTime"
+    },
+    "modified_date": {
+      "@id": "schema:dateModified",
+      "@type": "schema:DateTime"
+    },
+    "published_date": {
+      "@id": "schema:datePublished",
+      "@type": "schema:DateTime"
+    },
+    "url_public_html": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "url_public_api": {
+      "@id": "schema:sameAs",
+      "@type": "@id"
+    },
+    "timeline": "figshare:timeline",
+
+    "authors": {
+      "@id": "schema:author",
+      "@container": "@set"
+    },
+    "files": {
+      "@id": "schema:associatedMedia",
+      "@container": "@set"
+    }
+  },
+  "@type": "University",
+  "name": "University of Canterbury",
+  "url": "https://www.canterbury.ac.nz/",
+  "description": "Public research university in Christchurch, New Zealand. This JSON-LD context maps the institution and the figshare research-output objects (Article, Collection, Project) cataloged in its API Evangelist repository to schema.org."
+}

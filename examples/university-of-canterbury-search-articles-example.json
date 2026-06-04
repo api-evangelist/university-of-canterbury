@@ -1,0 +1,45 @@
+{
+  "operation": "POST /articles/search",
+  "description": "Search figshare articles, scoped to an institution. Representative request/response derived from the figshare OpenAPI definition; use the University of Canterbury institution_id to surface Canterbury Figshare records.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.figshare.com/v2/articles/search",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "search_for": "machine learning",
+      "page": 1,
+      "page_size": 10,
+      "order": "published_date",
+      "order_direction": "desc"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": 1434614,
+        "title": "Test article title",
+        "doi": "10.6084/m9.figshare.1434614",
+        "handle": "111184/figshare.1234",
+        "url": "https://api.figshare.com/v2/articles/1434614",
+        "url_public_html": "https://figshare.com/articles/media/Test_article_title/1434614",
+        "url_public_api": "https://api.figshare.com/v2/articles/1434614",
+        "url_private_html": "https://figshare.com/account/articles/1434614",
+        "url_private_api": "https://api.figshare.com/v2/account/articles/1434614",
+        "timeline": {
+          "posted": "2017-05-18T00:00:00",
+          "firstOnline": "2017-05-18T00:00:00"
+        },
+        "thumb": "https://ndownloader.figshare.com/files/123456789/preview/12345678/thumb.png",
+        "defined_type": 3,
+        "defined_type_name": "media",
+        "resource_doi": "",
+        "resource_title": "",
+        "created_date": "2017-05-18T11:49:03Z"
+      }
+    ]
+  }
+}

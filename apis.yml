@@ -77,6 +77,26 @@ apis:
         url: https://docs.figshare.com/
       - type: Documentation
         url: https://canterbury.figshare.com/
+      - type: OpenAPI
+        url: openapi/university-of-canterbury-figshare-api.yaml
+      - type: JSONSchema
+        url: json-schema/university-of-canterbury-article-schema.json
+      - type: JSONSchema
+        url: json-schema/university-of-canterbury-collection-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-canterbury-article-structure.json
+      - type: x-json-structure
+        url: json-structure/university-of-canterbury-collection-structure.json
+      - type: x-example
+        url: examples/university-of-canterbury-list-articles-example.json
+      - type: x-example
+        url: examples/university-of-canterbury-search-articles-example.json
+      - type: x-spectral-rules
+        url: rules/university-of-canterbury-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-canterbury-vocabulary.yml
+      - type: x-json-ld-context
+        url: json-ld/university-of-canterbury-context.jsonld
   - aid: university-of-canterbury:eng-git-gitlab
     name: UC Engineering GitLab API
     description: >-

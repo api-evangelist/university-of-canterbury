@@ -1,0 +1,64 @@
+rules:
+  uc-figshare-info-title:
+    description: API info must declare a title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+  uc-figshare-info-version:
+    description: API info must declare a version.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+  uc-figshare-server-url:
+    description: At least one server URL must be defined and point at the figshare v2 base.
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: "^https://api\\.figshare\\.com/v2"
+  uc-figshare-operation-tags:
+    description: Every operation should carry at least one tag (figshare groups by resource, e.g. articles, collections, projects).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+  uc-figshare-operation-responses:
+    description: Every operation must define responses.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: responses
+      function: truthy
+  uc-figshare-article-id-integer:
+    description: Article identifiers are integers across the figshare model.
+    severity: warn
+    given: $.components.schemas.Article.properties.id
+    then:
+      field: type
+      function: pattern
+      functionOptions:
+        match: "^integer$"
+  uc-figshare-doi-present:
+    description: Core scholarly objects (Article, Collection) should expose a DOI for citation.
+    severity: warn
+    given:
+      - $.components.schemas.Article.properties
+      - $.components.schemas.Collection.properties
+    then:
+      field: doi
+      function: truthy
+  uc-figshare-no-http-server:
+    description: Servers must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "^http://"
