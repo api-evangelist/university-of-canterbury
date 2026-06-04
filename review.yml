@@ -1,0 +1,54 @@
+---
+name: University of Canterbury
+description: University of Canterbury public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/university-of-canterbury/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      University of Canterbury has no unified public developer portal. Verified
+      live: the UC Research Repository (DSpace 7) OAI-PMH 2.0 endpoint returned a
+      valid Identify response (HTTP 200), and figshare's public REST API and
+      OAI-PMH endpoints (used by Canterbury Figshare) returned HTTP 200. The
+      DSpace REST API root and the Engineering GitLab REST API exist but
+      responded 403/401 to unauthenticated probes (gated, not public). The
+      Canterbury Figshare portal returned a Cloudflare 202 challenge to
+      automated requests. The UCCSER GitHub organization is real (31 public
+      repos) but is a research group, not a university API program. No endpoints
+      were fabricated; gated and challenge responses are reported as observed.
+    endpoints:
+      - url: https://ir.canterbury.ac.nz/server/oai/request?verb=Identify
+        status: 200
+        note: UC Research Repository DSpace 7 OAI-PMH 2.0 Identify; valid XML, repositoryName "UC Research Repository".
+      - url: https://ir.canterbury.ac.nz/dspace-oai/request?verb=Identify
+        status: 301
+        note: Legacy OAI path; 301 redirect to /server/oai/request.
+      - url: https://ir.canterbury.ac.nz/server/api
+        status: 403
+        note: DSpace 7 REST API root; 403 to unauthenticated probe (platform present, access gated).
+      - url: https://ir.canterbury.ac.nz/
+        status: 403
+        note: Repository home; 403 to automated probe (bot protection), browser-accessible.
+      - url: https://api.figshare.com/v2/articles?page_size=1
+        status: 200
+        note: figshare public REST API v2 used by Canterbury Figshare; live.
+      - url: https://api.figshare.com/v2/oai?verb=Identify
+        status: 200
+        note: figshare OAI-PMH 2.0 Identify; valid XML.
+      - url: https://canterbury.figshare.com/
+        status: 202
+        note: Canterbury Figshare portal; Cloudflare 202 challenge to automated request.
+      - url: https://eng-git.canterbury.ac.nz/
+        status: 200
+        note: UC College of Engineering self-hosted GitLab web app; live.
+      - url: https://eng-git.canterbury.ac.nz/api/v4/version
+        status: 401
+        note: GitLab REST API v4 present but authentication-gated (not public).
+      - url: https://github.com/uccser
+        status: 200
+        note: UCCSER GitHub org (Computer Science Education Research), 31 public repos.
+      - url: https://www.canterbury.ac.nz/
+        status: 200
+        note: Official university website; live.

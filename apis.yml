@@ -1,0 +1,114 @@
+---
+aid: university-of-canterbury
+name: University of Canterbury
+description: >-
+  University of Canterbury (Te Whare Wananga o Waitaha) is a public research
+  university in Christchurch, New Zealand, ranked #261 in the QS World University
+  Rankings 2025. Its public, machine-accessible developer footprint is centered
+  on scholarly and research infrastructure rather than a unified developer
+  portal: the UC Research Repository (a DSpace 7 platform) exposes a live
+  OAI-PMH 2.0 metadata harvesting interface and a DSpace REST API, the
+  institutional Canterbury Figshare instance is reachable through figshare's
+  public REST and OAI-PMH endpoints, and the College of Engineering runs a
+  self-hosted GitLab. No consolidated, publicly documented university-wide API
+  program was confirmed; entries below reflect only endpoints verified live.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/university-of-canterbury/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Open Data
+  - Repository
+  - OAI-PMH
+  - New Zealand
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: university-of-canterbury:research-repository-oai
+    name: UC Research Repository OAI-PMH
+    description: >-
+      OAI-PMH 2.0 metadata harvesting interface for the UC Research Repository,
+      a DSpace 7 institutional repository of theses, dissertations and research
+      outputs. Verified live (HTTP 200) returning a valid Identify response with
+      repositoryName "UC Research Repository" and base URL
+      https://ir.canterbury.ac.nz/server/oai/request.
+    humanURL: https://ir.canterbury.ac.nz/
+    baseURL: https://ir.canterbury.ac.nz/server/oai/request
+    tags: [ Research, Repository, OAI-PMH, DSpace, Metadata, Open Access ]
+    properties:
+      - type: Documentation
+        url: https://ir.canterbury.ac.nz/
+      - type: Authentication
+        url: https://ir.canterbury.ac.nz/server/oai/request?verb=Identify
+  - aid: university-of-canterbury:research-repository-rest
+    name: UC Research Repository DSpace REST API
+    description: >-
+      DSpace 7 REST API backing the UC Research Repository, providing
+      programmatic access to communities, collections and items. The API root
+      (https://ir.canterbury.ac.nz/server/api) is part of the standard DSpace 7
+      platform; it returned HTTP 403 to unauthenticated probes during review, so
+      access conditions were not fully confirmed.
+    humanURL: https://ir.canterbury.ac.nz/
+    baseURL: https://ir.canterbury.ac.nz/server/api
+    tags: [ Research, Repository, DSpace, REST, Metadata ]
+    properties:
+      - type: Documentation
+        url: https://ir.canterbury.ac.nz/
+  - aid: university-of-canterbury:figshare-api
+    name: Canterbury Figshare (figshare REST and OAI-PMH)
+    description: >-
+      Canterbury's institutional Figshare instance provides an open-access
+      research data and outputs platform. Figshare exposes a public REST API
+      (api.figshare.com/v2, verified HTTP 200) and an OAI-PMH 2.0 endpoint
+      (verified HTTP 200) that can surface institutional records. The Canterbury
+      portal itself sits behind Cloudflare (HTTP 202 challenge to automated
+      probes).
+    humanURL: https://canterbury.figshare.com/
+    baseURL: https://api.figshare.com/v2
+    tags: [ Research, Data, Figshare, REST, OAI-PMH, Open Access ]
+    properties:
+      - type: Documentation
+        url: https://docs.figshare.com/
+      - type: Documentation
+        url: https://canterbury.figshare.com/
+  - aid: university-of-canterbury:eng-git-gitlab
+    name: UC Engineering GitLab API
+    description: >-
+      Self-hosted GitLab instance operated by the University of Canterbury
+      College of Engineering. The web application is reachable (HTTP 200) and the
+      GitLab REST API v4 is present (HTTP 401 to unauthenticated calls,
+      indicating an authentication-gated GitLab API rather than a public one).
+    humanURL: https://eng-git.canterbury.ac.nz/
+    baseURL: https://eng-git.canterbury.ac.nz/api/v4
+    tags: [ GitLab, Source Code, Engineering, REST, Authentication ]
+    properties:
+      - type: Documentation
+        url: https://eng-git.canterbury.ac.nz/
+      - type: Authentication
+        url: https://eng-git.canterbury.ac.nz/api/v4/version
+common:
+  - type: Website
+    url: https://www.canterbury.ac.nz/
+  - type: GitHub
+    url: https://github.com/uccser
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/university-of-canterbury/
+  - type: SourceCode
+    url: https://eng-git.canterbury.ac.nz/
+  - type: Plans
+    url: plans/university-of-canterbury-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/university-of-canterbury-rate-limits.yml
+  - type: FinOps
+    url: finops/university-of-canterbury-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
