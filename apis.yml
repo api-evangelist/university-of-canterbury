@@ -113,6 +113,8 @@ apis:
       - type: Authentication
         url: https://eng-git.canterbury.ac.nz/api/v4/version
 common:
+  - type: DomainSecurity
+    url: security/university-of-canterbury-domain-security.yml
   - type: Authentication
     url: authentication/university-of-canterbury-authentication.yml
   - type: OAuthScopes
