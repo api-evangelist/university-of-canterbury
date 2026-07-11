@@ -113,6 +113,10 @@ apis:
       - type: Authentication
         url: https://eng-git.canterbury.ac.nz/api/v4/version
 common:
+  - type: Authentication
+    url: authentication/university-of-canterbury-authentication.yml
+  - type: OAuthScopes
+    url: scopes/university-of-canterbury-scopes.yml
   - type: Website
     url: https://www.canterbury.ac.nz/
   - type: GitHub
