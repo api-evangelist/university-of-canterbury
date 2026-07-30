@@ -13,9 +13,22 @@ description: >-
   self-hosted GitLab. No consolidated, publicly documented university-wide API
   program was confirmed; entries below reflect only endpoints verified live.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-canterbury.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-canterbury/refs/heads/main/apis.yml
 tags:
   - Education
@@ -30,88 +43,383 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: university-of-canterbury:research-repository-oai
-    name: UC Research Repository OAI-PMH
-    description: >-
-      OAI-PMH 2.0 metadata harvesting interface for the UC Research Repository,
-      a DSpace 7 institutional repository of theses, dissertations and research
-      outputs. Verified live (HTTP 200) returning a valid Identify response with
-      repositoryName "UC Research Repository" and base URL
-      https://ir.canterbury.ac.nz/server/oai/request.
-    humanURL: https://ir.canterbury.ac.nz/
-    baseURL: https://ir.canterbury.ac.nz/server/oai/request
-    tags: [ Research, Repository, OAI-PMH, DSpace, Metadata, Open Access ]
-    properties:
-      - type: Documentation
-        url: https://ir.canterbury.ac.nz/
-      - type: Authentication
-        url: https://ir.canterbury.ac.nz/server/oai/request?verb=Identify
-  - aid: university-of-canterbury:research-repository-rest
-    name: UC Research Repository DSpace REST API
-    description: >-
-      DSpace 7 REST API backing the UC Research Repository, providing
-      programmatic access to communities, collections and items. The API root
-      (https://ir.canterbury.ac.nz/server/api) is part of the standard DSpace 7
-      platform; it returned HTTP 403 to unauthenticated probes during review, so
-      access conditions were not fully confirmed.
-    humanURL: https://ir.canterbury.ac.nz/
-    baseURL: https://ir.canterbury.ac.nz/server/api
-    tags: [ Research, Repository, DSpace, REST, Metadata ]
-    properties:
-      - type: Documentation
-        url: https://ir.canterbury.ac.nz/
-  - aid: university-of-canterbury:figshare-api
-    name: Canterbury Figshare (figshare REST and OAI-PMH)
-    description: >-
-      Canterbury's institutional Figshare instance provides an open-access
-      research data and outputs platform. Figshare exposes a public REST API
-      (api.figshare.com/v2, verified HTTP 200) and an OAI-PMH 2.0 endpoint
-      (verified HTTP 200) that can surface institutional records. The Canterbury
-      portal itself sits behind Cloudflare (HTTP 202 challenge to automated
-      probes).
-    humanURL: https://canterbury.figshare.com/
-    baseURL: https://api.figshare.com/v2
-    tags: [ Research, Data, Figshare, REST, OAI-PMH, Open Access ]
-    properties:
-      - type: Documentation
-        url: https://docs.figshare.com/
-      - type: Documentation
-        url: https://canterbury.figshare.com/
-      - type: OpenAPI
-        url: openapi/university-of-canterbury-figshare-api.yaml
-      - type: JSONSchema
-        url: json-schema/university-of-canterbury-article-schema.json
-      - type: JSONSchema
-        url: json-schema/university-of-canterbury-collection-schema.json
-      - type: x-json-structure
-        url: json-structure/university-of-canterbury-article-structure.json
-      - type: x-json-structure
-        url: json-structure/university-of-canterbury-collection-structure.json
-      - type: x-example
-        url: examples/university-of-canterbury-list-articles-example.json
-      - type: x-example
-        url: examples/university-of-canterbury-search-articles-example.json
-      - type: x-spectral-rules
-        url: rules/university-of-canterbury-rules.yml
-      - type: x-vocabulary
-        url: vocabulary/university-of-canterbury-vocabulary.yml
-      - type: x-json-ld-context
-        url: json-ld/university-of-canterbury-context.jsonld
-  - aid: university-of-canterbury:eng-git-gitlab
-    name: UC Engineering GitLab API
-    description: >-
-      Self-hosted GitLab instance operated by the University of Canterbury
-      College of Engineering. The web application is reachable (HTTP 200) and the
-      GitLab REST API v4 is present (HTTP 401 to unauthenticated calls,
-      indicating an authentication-gated GitLab API rather than a public one).
-    humanURL: https://eng-git.canterbury.ac.nz/
-    baseURL: https://eng-git.canterbury.ac.nz/api/v4
-    tags: [ GitLab, Source Code, Engineering, REST, Authentication ]
-    properties:
-      - type: Documentation
-        url: https://eng-git.canterbury.ac.nz/
-      - type: Authentication
-        url: https://eng-git.canterbury.ac.nz/api/v4/version
+- aid: university-of-canterbury:research-repository-oai
+  name: UC Research Repository OAI-PMH
+  description: >-
+    OAI-PMH 2.0 metadata harvesting interface for the UC Research Repository, a DSpace 7 institutional
+    repository of theses, dissertations and research outputs. Verified live (HTTP 200) returning a valid
+    Identify response with repositoryName "UC Research Repository" and base URL https://ir.canterbury.ac.nz/server/oai/request.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - Research
+  - Repository
+  - OAI-PMH
+  - DSpace
+  - Metadata
+  - Open Access
+  properties:
+  - type: Documentation
+    url: https://ir.canterbury.ac.nz/
+  - type: Authentication
+    url: https://ir.canterbury.ac.nz/server/oai/request?verb=Identify
+- aid: university-of-canterbury:research-repository-rest
+  name: UC Research Repository DSpace REST API
+  description: >-
+    DSpace 7 REST API backing the UC Research Repository, providing programmatic access to communities,
+    collections and items. The API root (https://ir.canterbury.ac.nz/server/api) is part of the standard
+    DSpace 7 platform; it returned HTTP 403 to unauthenticated probes during review, so access conditions
+    were not fully confirmed.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/api
+  tags:
+  - Research
+  - Repository
+  - DSpace
+  - REST
+  - Metadata
+  properties:
+  - type: Documentation
+    url: https://ir.canterbury.ac.nz/
+- aid: university-of-canterbury:eng-git-gitlab
+  name: UC Engineering GitLab API
+  description: >-
+    Self-hosted GitLab instance operated by the University of Canterbury College of Engineering. The web
+    application is reachable (HTTP 200) and the GitLab REST API v4 is present (HTTP 401 to unauthenticated
+    calls, indicating an authentication-gated GitLab API rather than a public one).
+  humanURL: https://eng-git.canterbury.ac.nz/
+  baseURL: https://eng-git.canterbury.ac.nz/api/v4
+  tags:
+  - GitLab
+  - Source Code
+  - Engineering
+  - REST
+  - Authentication
+  properties:
+  - type: Documentation
+    url: https://eng-git.canterbury.ac.nz/
+  - type: Authentication
+    url: https://eng-git.canterbury.ac.nz/api/v4/version
+- aid: university-of-canterbury:university-of-canterbury-altmetric-api
+  name: University of Canterbury altmetric API
+  description: The altmetric API from University of Canterbury — 1 operation(s) for altmetric.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - altmetric
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-altmetric-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-articles-api
+  name: University of Canterbury articles API
+  description: The articles API from University of Canterbury — 34 operation(s) for articles.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - articles
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-articles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-authors-api
+  name: University of Canterbury authors API
+  description: The authors API from University of Canterbury — 2 operation(s) for authors.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - authors
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-authors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-collections-api
+  name: University of Canterbury collections API
+  description: The collections API from University of Canterbury — 21 operation(s) for collections.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - collections
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-institutions-api
+  name: University of Canterbury institutions API
+  description: The institutions API from University of Canterbury — 20 operation(s) for institutions.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - institutions
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-institutions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-oauth-api
+  name: University of Canterbury oauth API
+  description: The oauth API from University of Canterbury — 1 operation(s) for oauth.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-other-api
+  name: University of Canterbury other API
+  description: The other API from University of Canterbury — 7 operation(s) for other.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - other
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-other-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-profiles-api
+  name: University of Canterbury profiles API
+  description: The profiles API from University of Canterbury — 2 operation(s) for profiles.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-projects-api
+  name: University of Canterbury projects API
+  description: The projects API from University of Canterbury — 17 operation(s) for projects.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
+- aid: university-of-canterbury:university-of-canterbury-symplectic-api
+  name: University of Canterbury symplectic API
+  description: The symplectic API from University of Canterbury — 5 operation(s) for symplectic.
+  humanURL: https://ir.canterbury.ac.nz/
+  baseURL: https://ir.canterbury.ac.nz/server/oai/request
+  tags:
+  - symplectic
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-canterbury-symplectic-api-openapi.yml
+  - type: Documentation
+    url: https://docs.figshare.com/
+  - type: Documentation
+    url: https://canterbury.figshare.com/
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-article-schema.json
+  - type: JSONSchema
+    url: json-schema/university-of-canterbury-collection-schema.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-article-structure.json
+  - type: x-json-structure
+    url: json-structure/university-of-canterbury-collection-structure.json
+  - type: x-example
+    url: examples/university-of-canterbury-list-articles-example.json
+  - type: x-example
+    url: examples/university-of-canterbury-search-articles-example.json
+  - type: x-spectral-rules
+    url: rules/university-of-canterbury-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/university-of-canterbury-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/university-of-canterbury-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/university-of-canterbury-agentic-access.yml
