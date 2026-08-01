@@ -1,0 +1,32 @@
+{
+  "provider": "university-of-canterbury",
+  "sources": [
+    "university-of-canterbury-altmetric-api-openapi.yml",
+    "university-of-canterbury-articles-api-openapi.yml",
+    "university-of-canterbury-authors-api-openapi.yml",
+    "university-of-canterbury-collections-api-openapi.yml",
+    "university-of-canterbury-institutions-api-openapi.yml",
+    "university-of-canterbury-oauth-api-openapi.yml",
+    "university-of-canterbury-other-api-openapi.yml",
+    "university-of-canterbury-profiles-api-openapi.yml",
+    "university-of-canterbury-projects-api-openapi.yml",
+    "university-of-canterbury-symplectic-api-openapi.yml"
+  ],
+  "outputs": [
+    "university-of-canterbury-altmetric-api-openapi.yml",
+    "university-of-canterbury-articles-api-openapi.yml",
+    "university-of-canterbury-authors-api-openapi.yml",
+    "university-of-canterbury-collections-api-openapi.yml",
+    "university-of-canterbury-institutions-api-openapi.yml",
+    "university-of-canterbury-oauth-api-openapi.yml",
+    "university-of-canterbury-other-api-openapi.yml",
+    "university-of-canterbury-profiles-api-openapi.yml",
+    "university-of-canterbury-projects-api-openapi.yml",
+    "university-of-canterbury-symplectic-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
