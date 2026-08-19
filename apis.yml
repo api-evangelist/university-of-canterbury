@@ -41,7 +41,7 @@ tags:
   - New Zealand
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: university-of-canterbury:research-repository-oai
   name: UC Research Repository OAI-PMH
