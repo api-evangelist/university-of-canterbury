@@ -138,6 +138,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Articles
+  tags_raw:
   - articles
   properties:
   - type: OpenAPI
@@ -170,6 +172,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Authors
+  tags_raw:
   - authors
   properties:
   - type: OpenAPI
@@ -202,6 +206,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Collection
+  tags_raw:
   - collections
   properties:
   - type: OpenAPI
@@ -266,6 +272,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Authentication
+  tags_raw:
   - oauth
   properties:
   - type: OpenAPI
@@ -297,7 +305,8 @@ apis:
   description: The other API from University of Canterbury — 7 operation(s) for other.
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - other
   properties:
   - type: OpenAPI
@@ -330,6 +339,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Profiles
+  tags_raw:
   - profiles
   properties:
   - type: OpenAPI
@@ -362,6 +373,8 @@ apis:
   humanURL: https://ir.canterbury.ac.nz/
   baseURL: https://ir.canterbury.ac.nz/server/oai/request
   tags:
+  - Project
+  tags_raw:
   - projects
   properties:
   - type: OpenAPI
