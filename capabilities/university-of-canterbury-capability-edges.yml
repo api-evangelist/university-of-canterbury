@@ -1,0 +1,47 @@
+slug: university-of-canterbury
+provider: University of Canterbury
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: articles
+  spec_file: university-of-canterbury-articles-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.85
+  evidence: GET /articles/{article_id}  article_details  View article details; GET /articles/{article_id}/versions/{version_id}/embargo  Public
+    Article Embargo for article version
+  reason: Figshare articles are deposited research outputs with versions, files, embargo and confidentiality
+    controls — this is stewardship and publication of scholarly output in an institutional repository,
+    not generic content management.
+- tag: collections
+  spec_file: university-of-canterbury-collections-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.8
+  evidence: 'GET /collections/{collection_id}/articles  collection_articles  Public Collection Articles;
+    schemas: CollectionDOI, CollectionHandle, RelatedMaterial'
+  reason: Collections group deposited research articles and carry DOIs and handles, which is scholarly-output
+    stewardship in the research repository rather than library collection development or marketing content.
+- tag: symplectic
+  spec_file: university-of-canterbury-symplectic-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.7
+  evidence: GET /symplectic/articles  symplectic_changed_articles  Get changed articles for Symplectic
+    Elements
+  reason: These endpoints feed changed article and account data to Symplectic Elements, a research information
+    management system — i.e. synchronising the institution's scholarly output records. It is integration-shaped,
+    hence 0.7 rather than higher.

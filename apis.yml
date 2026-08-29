@@ -446,6 +446,9 @@ apis:
   - type: x-json-ld-context
     url: json-ld/university-of-canterbury-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/university-of-canterbury-capability-edges.yml
+    name: University of Canterbury Business Capability Map
   - type: AgenticAccess
     url: agentic-access/university-of-canterbury-agentic-access.yml
   - type: DomainSecurity
