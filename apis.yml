@@ -145,6 +145,12 @@ apis:
   - Identity Federation
   - SAML
   - Shibboleth
+  - SSO
+  - Metadata
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
   - Single Sign-On
   - Metadata
   properties:
@@ -211,6 +217,12 @@ apis:
   - Identity Federation
   - SAML
   - Shibboleth
+  - SSO
+  - Tenants
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
   - Single Sign-On
   - Tenant
   properties:
@@ -232,6 +244,12 @@ apis:
   humanURL: https://canterbury.figshare.com/
   baseURL: https://canterbury.figshare.com/
   tags:
+  - Research Data
+  - Repository
+  - Figshare
+  - Tenants
+  - Open Access
+  tags_raw:
   - Research Data
   - Repository
   - Figshare
