@@ -72,19 +72,32 @@ University of Canterbury (Te Whare Wananga o Waitaha) is a public research unive
 ## Type
 
 - Index
+- university / Public Research University
 - Consumer
-- 3rd-Party
+- Internal
 
 ## Tags
 
-Education, Higher Education, University, Research, Open Data, Repository, OAI-PMH, New Zealand
+Education, Higher Education, University, New Zealand, Research, Research Repository, Open Access, OAI-PMH, Identity Federation, SAML, Learning Management
 
 ## APIs
 
-- **UC Research Repository OAI-PMH** — DSpace 7 OAI-PMH 2.0 metadata harvesting interface (verified live). Docs: https://ir.canterbury.ac.nz/ — Base: https://ir.canterbury.ac.nz/server/oai/request
-- **UC Research Repository DSpace REST API** — DSpace 7 REST API (root present, returned 403 to unauthenticated probe). Docs: https://ir.canterbury.ac.nz/ — Base: https://ir.canterbury.ac.nz/server/api
-- **Canterbury Figshare (figshare REST and OAI-PMH)** — institutional Figshare research data platform on figshare's public REST and OAI-PMH endpoints. Docs: https://docs.figshare.com/ — Base: https://api.figshare.com/v2
-- **UC Engineering GitLab API** — self-hosted GitLab REST API v4 (present, authentication-gated). Docs: https://eng-git.canterbury.ac.nz/ — Base: https://eng-git.canterbury.ac.nz/api/v4
+Every entry carries an operator. `institution` means the University of Canterbury runs the thing the
+entry describes. `tenant` means the institution's data and identity on someone else's platform — the
+relationship is real, the contract is not theirs.
+
+- **UC Research Repository OAI-PMH** (`institution`) — self-hosted DSpace 7 OAI-PMH 2.0 harvesting interface; verified live 2026-08-30 (HTTP 200, valid Identify, thirteen metadata formats). Base: https://ir.canterbury.ac.nz/server/oai/request
+- **UC Research Repository DSpace REST API** (`institution`) — live but behind a Cloudflare bot challenge (HTTP 403). Base: https://ir.canterbury.ac.nz/server/api
+- **UC API Gateway** (`institution`) — CA API Gateway 9.0 on the institution's own domain; every probed path returns HTTP 500 "Policy Falsified / Service Not Found". No public service routed, no catalogue published. Base: https://api.canterbury.ac.nz/
+- **UC Shibboleth SAML 2.0 Service Provider Metadata** (`institution`) — three SPs on canterbury.ac.nz hosts publish valid SAML 2.0 metadata (HTTP 200): learn, assessment, eportfolio. Base: https://learn.canterbury.ac.nz/Shibboleth.sso/Metadata
+- **LEARN LTI 1.3 Platform (Moodle)** (`institution`) — live LTI 1.3 JWKS on the institution's host (HTTP 200); Moodle web services disabled. Base: https://learn.canterbury.ac.nz/mod/lti/certs.php
+- **UC Engineering GitLab API** (`institution`) — self-hosted GitLab REST API v4, authentication-gated (HTTP 401). Base: https://eng-git.canterbury.ac.nz/api/v4
+- **Tuakiri Hosted Identity Provider for canterbury.ac.nz** (`tenant`) — the institution's IdP entityID is under canterbury.ac.nz, but every SSO/SLO endpoint is hosted by REANNZ at hosted-login.tuakiri.ac.nz. Base: https://hosted-login.tuakiri.ac.nz/hosting/canterbury.ac.nz/idp/profile/SAML2/Redirect/SSO
+- **Canterbury Figshare Research Data Repository** (`tenant`) — the institution's research data repository on Figshare's platform; the API contract is Figshare's, served from the shared vendor host. Base: https://api.figshare.com/v2
+
+## Conformance
+
+- conformance/university-of-canterbury-conformance.yml — `education` regime domain standards: **oai-pmh**, **saml**, **shibboleth**, **lti** evidenced live; scim, oneroster, ed-fi, caliper, qti, orcid, datacite and crossref recorded as not found.
 
 ## Plans
 
@@ -101,19 +114,44 @@ Education, Higher Education, University, Research, Open Data, Repository, OAI-PM
 ## Timestamps
 
 - Created: 2026-06-03
-- Modified: 2026-06-03
+- Modified: 2026-08-30
 
 ## Common Properties
 
 - Website: https://www.canterbury.ac.nz/
-- GitHub: https://github.com/uccser
+- GitHubOrganization: https://github.com/uccser
 - LinkedIn: https://www.linkedin.com/school/university-of-canterbury/
 - SourceCode: https://eng-git.canterbury.ac.nz/
-- Plans, RateLimits, FinOps, Review pointers (see above)
+- PrivacyPolicy: https://www.canterbury.ac.nz/about-uc/corporate-information/policies/privacy-policy
+- CourseCatalog: https://www.canterbury.ac.nz/study/academic-study/courses
+- LibraryCatalog: https://www.canterbury.ac.nz/library
+- ResearchRepository: https://ir.canterbury.ac.nz/
+- IdentityFederation: https://directory.tuakiri.ac.nz/metadata/tuakiri-metadata-signed.xml
+- Conformance, DomainSecurity, Plans, RateLimits, FinOps, Review pointers (see above)
 
 ## Notes
 
-All endpoints were probed during review (2026-06-03). Verified live (HTTP 200): the UC Research Repository OAI-PMH endpoint (valid DSpace 7 Identify response) and figshare's public REST API and OAI-PMH endpoints. The DSpace REST API root (403) and the Engineering GitLab REST API (401) exist but are gated/unauthenticated-blocked. The Canterbury Figshare portal returned a Cloudflare 202 challenge to automated requests; the repository home (403) and LinkedIn (999) block bots but are browser-accessible. The UCCSER GitHub org is a Computer Science Education Research group (31 public repos), not a university-wide API program. No university-wide public developer portal was found. No endpoints were fabricated.
+**Corrected 2026-08-30.** This profile was first built on 2026-06-03, before the enrichment pipeline
+had an ownership check. Eleven of its fourteen API entries — `altmetric`, `articles`, `authors`,
+`collections`, `institutions`, `oauth`, `other`, `profiles`, `projects`, `symplectic` and the
+Figshare tenancy itself — were a **single Figshare API v2 OpenAPI**, split per tag by our own
+refine step and attributed to this institution. Every one of those specs declared
+`info.title: Figshare …`, `info.contact: Figshare Support` and `servers: https://api.figshare.com/v2`
+— a generic vendor host every Figshare customer calls — while our `apis.yml` had re-based them onto
+`ir.canterbury.ac.nz`, which is a different system entirely. That contract and the 47 files derived
+from it (JSON Schema, JSON Structure, examples, rules, vocabulary, JSON-LD, scopes, authentication,
+agentic-access, capability edges and twenty collections) have been removed. The tenancy remains,
+recorded as a relationship.
+
+All endpoints were re-probed 2026-08-30 with a browser User-Agent. Verified live and readable
+(HTTP 200): the OAI-PMH interface, three Shibboleth SP metadata endpoints, and the LEARN LTI 1.3
+JWKS. Live but closed: the API gateway (500, no service routed), the Engineering GitLab API (401),
+the DSpace REST API (403, Cloudflare bot challenge). A 403 or a 202 challenge is a finding about
+bot management, not evidence the host is dead. No `llms.txt` and no `.well-known/security.txt` are
+published; `data.canterbury.ac.nz` and `developer.canterbury.ac.nz` do not resolve. No AI or
+responsible-AI policy was found in the UC Policy Library. The UCCSER GitHub org is a Computer
+Science Education Research group, not a university-wide API programme. No university-wide public
+developer portal exists. No endpoints were fabricated.
 
 ## Maintainers
 

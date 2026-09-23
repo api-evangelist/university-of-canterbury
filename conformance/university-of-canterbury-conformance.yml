@@ -1,0 +1,117 @@
+specification: API Evangelist Conformance
+specificationVersion: '0.1'
+provider: University of Canterbury
+providerId: university-of-canterbury
+generated: '2026-08-30'
+method: probed
+source: live HTTP probes of institution-operated hosts + the signed Tuakiri federation metadata aggregate
+regime: education
+description: >-
+  Domain-standard conformance for the University of Canterbury, measured against the Kin Score
+  `education` regime standards[] list. Every entry below is evidenced by a live response from a
+  host under the institution's own registrable domain (canterbury.ac.nz), or by the institution's
+  own entry in a signed third-party federation metadata aggregate. Standards with no evidence are
+  recorded as not_found rather than assumed — this profile is reward-only and nothing here is
+  inferred from a prose claim.
+conformance:
+- standard: oai-pmh
+  status: conformant
+  confidence: high
+  operator: institution
+  detail: >-
+    The UC Research Repository (DSpace 7, self-hosted on the institution's own domain) exposes a
+    live OAI-PMH 2.0 interface. A verb=Identify request returns a valid OAI-PMH response with
+    protocolVersion 2.0, repositoryName "UC Research Repository", repositoryIdentifier
+    ir.canterbury.ac.nz, adminEmail eservices@libr.canterbury.ac.nz and earliestDatestamp
+    2007-05-08. verb=ListMetadataFormats advertises thirteen metadata prefixes.
+  evidence:
+  - url: https://ir.canterbury.ac.nz/server/oai/request?verb=Identify
+    status: 200
+    note: 'valid Identify response; protocolVersion 2.0; baseURL https://ir.canterbury.ac.nz/server/oai/request'
+  - url: https://ir.canterbury.ac.nz/server/oai/request?verb=ListMetadataFormats
+    status: 200
+    note: 'metadataPrefix: didl, dim, etdms, marc, mets, mods, oai_dc, ore, qdc, rdf, rioxx, uketd_dc, xoai'
+  - url: https://ir.canterbury.ac.nz/server/oai/request?verb=ListSets
+    status: 200
+    note: set hierarchy enumerates
+- standard: saml
+  status: conformant
+  confidence: high
+  operator: institution
+  detail: >-
+    Three SAML 2.0 Service Providers run on the institution's own hosts and publish machine-readable
+    SAML 2.0 metadata at the standard Shibboleth.sso/Metadata location. Each returns an
+    md:EntityDescriptor with an entityID under canterbury.ac.nz and OrganizationDisplayName
+    "University of Canterbury".
+  evidence:
+  - url: https://learn.canterbury.ac.nz/Shibboleth.sso/Metadata
+    status: 200
+    note: 'entityID https://learn.canterbury.ac.nz/shibboleth — SPSSODescriptor, SAML2 POST/Artifact/SLO endpoints'
+  - url: https://assessment.canterbury.ac.nz/Shibboleth.sso/Metadata
+    status: 200
+    note: 'entityID https://assessment.canterbury.ac.nz/shibboleth'
+  - url: https://eportfolio.canterbury.ac.nz/Shibboleth.sso/Metadata
+    status: 200
+    note: 'entityID https://eportfolio.canterbury.ac.nz/shibboleth'
+- standard: shibboleth
+  status: conformant
+  confidence: high
+  operator: mixed
+  detail: >-
+    The institution is a member of Tuakiri, the New Zealand Access Federation operated by REANNZ,
+    and is registered in the signed federation metadata aggregate as both an Identity Provider and
+    three Service Providers. The Service Providers run Shibboleth SP software on the institution's
+    own hosts (operator institution). The Identity Provider entityID is
+    https://idp.canterbury.ac.nz/idp/shibboleth and carries OrganizationDisplayName "University of
+    Canterbury", but every one of its SSO/SLO endpoint Locations resolves to
+    hosted-login.tuakiri.ac.nz/hosting/canterbury.ac.nz/ — the institution uses Tuakiri's Hosted IdP
+    service, so the IdP deployment is operator tenant, not operator institution. That distinction
+    is the whole reason this file records an operator per entry.
+  evidence:
+  - url: https://directory.tuakiri.ac.nz/metadata/tuakiri-metadata-signed.xml
+    status: 200
+    note: >-
+      signed aggregate, 82 entities; 4 carry canterbury.ac.nz entityIDs — 1 IDPSSODescriptor
+      (idp.canterbury.ac.nz, endpoints hosted at hosted-login.tuakiri.ac.nz) and 3 SPSSODescriptors
+      (learn, assessment, eportfolio)
+- standard: lti
+  status: conformant
+  confidence: medium
+  operator: institution
+  detail: >-
+    LEARN, the institution's self-hosted Moodle at learn.canterbury.ac.nz, serves a live LTI 1.3
+    platform JSON Web Key Set and an LTI 1.3 authorization endpoint from the institution's own host.
+    Confidence is medium rather than high because the LTI implementation is Moodle's, not the
+    institution's engineering — what is institution-operated is the deployment.
+  evidence:
+  - url: https://learn.canterbury.ac.nz/mod/lti/certs.php
+    status: 200
+    note: 'JWKS returned; RSA keys, alg RS256, kid 5ea1e28c51eeef42e935'
+  - url: https://learn.canterbury.ac.nz/mod/lti/auth.php
+    status: 200
+    note: LTI 1.3 platform authorization endpoint responds
+not_found:
+- standard: scim
+  note: no SCIM endpoint discovered on any canterbury.ac.nz host
+- standard: oneroster
+  note: no OneRoster endpoint discovered
+- standard: ed-fi
+  note: not applicable — Ed-Fi is a US K-12 data standard
+- standard: caliper
+  note: no Caliper sensor or event store discovered
+- standard: qti
+  note: no QTI surface discovered
+- standard: orcid
+  note: >-
+    no institution-operated ORCID integration endpoint discovered; the UC Research Repository does
+    not advertise an ORCID member API surface
+- standard: datacite
+  note: >-
+    the UC Research Repository mints Handle-based identifiers (prefix 10092, sampleIdentifier
+    oai:ir.canterbury.ac.nz:10092/1234), not DataCite DOIs; a DataCite REST query for
+    ir.canterbury.ac.nz returned 0 DOIs
+- standard: crossref
+  note: no institution-operated Crossref deposit or query surface discovered
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
