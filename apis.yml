@@ -59,6 +59,18 @@ tags:
   - OAI-PMH
   - Identity Federation
   - SAML
+  - LMS
+tags_raw:
+  - Education
+  - Higher Education
+  - University
+  - New Zealand
+  - Research
+  - Research Repository
+  - Open Access
+  - OAI-PMH
+  - Identity Federation
+  - SAML
   - Learning Management
 created: '2026-06-03'
 modified: '2026-08-30'
@@ -172,6 +184,11 @@ apis:
   humanURL: https://learn.canterbury.ac.nz/
   baseURL: https://learn.canterbury.ac.nz/mod/lti/certs.php
   tags:
+  - LMS
+  - LTI
+  - Moodle
+  - Authentication
+  tags_raw:
   - Learning Management
   - LTI
   - Moodle
